@@ -12,6 +12,10 @@
 #3.7 Clean up the temp storage account and the old managed disk
 #3.8 Snapshot created in step2 will not be removed by this script
 
+#Roles needed for this Script
+#VM Contributor and Storage Account Contributor and role create permission for Microsoft.Compute/disks/* 
+
+
 #
 # Variables
 $DiskID = "/subscriptions/955ad7d0-a2bc-4ec0-a274-46e0c07ca535/resourceGroups/Asia_lab/providers/Microsoft.Compute/disks/128win7_OsDisk_1_761347e144b640d1a5bc293e9a3fb177"
@@ -20,7 +24,7 @@ $DiskSizeGB = 32
 
 #Auto set Variable
 $AzSubscription = $DiskID.substring(15,36)
-$snapshotname = $VMName+"-OSSnapshot-"+(get-date).ToString(‘M/d/yyyy’).replace('/','')
+$snapshotname = $VMName+"-OSSnapshot-"+(get-date).ToString('HH/mm/MM/dd/yyyy').replace('/','')
 
 # Script begins
 # Log into AzAccount
